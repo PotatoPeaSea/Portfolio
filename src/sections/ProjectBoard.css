@@ -43,7 +43,7 @@
     "p1 p2 p3"
     "p4 mcu p5"
     "e1 p6 e2";
-  gap: 80px 40px;
+  gap: 120px 80px;
   justify-items: center;
   align-items: center;
   padding: 40px;
@@ -59,6 +59,10 @@
   align-items: center;
   gap: 12px;
   animation: fadeInUp 0.5s ease both;
+}
+
+.project-board__cell:has(.pchip--expanded) {
+  z-index: 100 !important;
 }
 
 /* Outline overlay for cells */

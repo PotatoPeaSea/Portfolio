@@ -5,7 +5,7 @@ import './Microcontroller.css';
  * Has an antenna receiver and connects to all project chips.
  */
 export default function Microcontroller({ className = '' }: { className?: string }) {
-  const pinsPerSide = 6;
+  const pinsPerSide = 10;
   const pins = Array.from({ length: pinsPerSide });
 
   return (

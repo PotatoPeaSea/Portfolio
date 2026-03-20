@@ -5,6 +5,7 @@ import ExperienceChip from './sections/ExperienceChip';
 import ProjectBoard from './sections/ProjectBoard';
 import MemoryBus from './components/MemoryBus';
 import Antenna from './components/Antenna';
+import TcpTransfer from './components/TcpTransfer';
 import './App.css';
 
 export default function App() {
@@ -12,6 +13,9 @@ export default function App() {
     <Board>
       {/* Main content sections */}
       <main className="app-layout">
+        
+        <TcpTransfer />
+
         {/* CPU with antenna */}
         <div className="app-hero-wrapper">
           <div className="app-antenna-wrapper">

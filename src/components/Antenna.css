@@ -24,6 +24,22 @@
   background: var(--pin-color);
   border-radius: 2px 2px 0 0;
   box-shadow: 0 0 4px rgba(192, 192, 192, 0.3);
+  position: relative;
+}
+
+.antenna__pins {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+}
+
+.antenna__pin {
+  width: 2px;
+  height: 6px;
+  background: var(--pin-color);
 }
 
 .antenna__rod {

@@ -1,12 +1,12 @@
 /* ============================================
-   MemoryBus — Clickable Data Bus w/ Contact Info
+   MemoryBus — Contact Info Box
    ============================================ */
 
 .memory-bus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   position: relative;
   z-index: 10;
 }
@@ -14,111 +14,27 @@
 .memory-bus__label {
   opacity: 0.35;
   font-size: 0.45rem;
+  letter-spacing: 0.1em;
 }
 
-/* ---- Bus Body ---- */
-.memory-bus__body {
-  position: relative;
-  cursor: pointer;
-  padding: 6px 12px;
-  border: 1px solid rgba(200, 117, 51, 0.25);
-  border-radius: 4px;
-  background: rgba(200, 117, 51, 0.04);
-  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
-}
-
-.memory-bus__body:hover {
-  border-color: var(--trace-copper);
-  box-shadow: 0 0 12px rgba(200, 117, 51, 0.2);
-  background: rgba(200, 117, 51, 0.08);
-}
-
-.memory-bus__body--active {
-  border-color: var(--trace-green);
-  box-shadow: 0 0 16px rgba(0, 255, 102, 0.15);
-  background: rgba(0, 255, 102, 0.04);
-}
-
-/* ---- Bus Lines Grid ---- */
-.memory-bus__lines {
-  display: flex;
-  gap: 3px;
-  padding: 4px 0;
-}
-
-.memory-bus__line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.memory-bus__wire {
-  width: 2px;
-  height: 30px;
-  background: var(--trace-copper);
-  border-radius: 1px;
-  opacity: 0.7;
-  transition: opacity 0.3s, background 0.3s, box-shadow 0.3s;
-}
-
-.memory-bus__body:hover .memory-bus__wire {
-  opacity: 1;
-  box-shadow: 0 0 4px rgba(200, 117, 51, 0.5);
-}
-
-.memory-bus__body--active .memory-bus__wire {
-  background: var(--trace-green);
-  box-shadow: 0 0 6px rgba(0, 255, 102, 0.4);
-  animation: traceFlow 1.5s linear infinite;
-}
-
-.memory-bus__wire-label {
-  font-size: 0.35rem;
-  opacity: 0.4;
-  color: var(--trace-copper);
-}
-
-/* ---- Brackets ---- */
-.memory-bus__bracket {
-  position: absolute;
-  left: 4px;
-  right: 4px;
-  height: 2px;
-  background: var(--trace-copper);
-  opacity: 0.4;
-}
-
-.memory-bus__bracket--top { top: 0; }
-.memory-bus__bracket--bottom { bottom: 0; }
-
-/* ---- Contact Overlay ---- */
-.memory-bus__contact {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  background: rgba(17, 17, 17, 0.97);
-  border: 1px solid var(--trace-green);
+/* ---- Contact Box ---- */
+.memory-bus__contact-box {
+  width: 260px;
+  background: var(--chip-bg);
+  border: 1.5px solid var(--chip-border);
   border-radius: 6px;
   padding: 16px;
-  z-index: 100;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 102, 0.1);
-  animation: fadeInUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+  animation: fadeInUp 0.5s ease both;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.memory-bus__contact::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 12px;
-  height: 12px;
-  background: rgba(17, 17, 17, 0.97);
-  border-top: 1px solid var(--trace-green);
-  border-left: 1px solid var(--trace-green);
+.memory-bus__contact-box:hover {
+  border-color: var(--trace-green);
+  box-shadow: 0 0 16px rgba(0, 255, 102, 0.15);
 }
 
 .memory-bus__contact-header {
@@ -130,19 +46,10 @@
   border-bottom: 1px solid rgba(0, 255, 102, 0.1);
 }
 
-.memory-bus__close {
-  background: none;
-  border: none;
-  color: var(--silk-color);
-  font-size: 0.85rem;
-  cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 3px;
-  transition: background 0.2s;
-}
-
-.memory-bus__close:hover {
-  background: rgba(255, 255, 255, 0.1);
+.memory-bus__contact-header span {
+  font-size: 0.55rem;
+  color: var(--trace-green);
+  letter-spacing: 0.1em;
 }
 
 .memory-bus__contact-list {
@@ -214,7 +121,31 @@
 .memory-bus__contact-hint {
   margin-top: 10px;
   text-align: center;
-  opacity: 0.25;
+  opacity: 0.4;
   font-size: 0.4rem;
   color: var(--trace-green);
+}
+
+/* ---- Component Pins ---- */
+.memory-bus__pins {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.memory-bus__pins--top {
+  top: -8px;
+}
+
+.memory-bus__pins--bottom {
+  bottom: -8px;
+}
+
+.memory-bus__pin {
+  width: 3px;
+  height: 8px;
+  background: var(--trace-silver);
+  border-radius: 1px;
 }

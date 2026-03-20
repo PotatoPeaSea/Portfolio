@@ -1,6 +1,7 @@
 import { projects } from '../data/projectData';
 import ProjectChip from '../components/ProjectChip';
 import Microcontroller from '../components/Microcontroller';
+import Antenna from '../components/Antenna';
 import DynamicTraces, { type TraceConnection } from '../components/DynamicTraces';
 import './ProjectBoard.css';
 
@@ -32,6 +33,10 @@ export default function ProjectBoard() {
     // Poker Tracker (mid-right) to MCU right pins (2 wires)
     { fromId: 'mcu-pin-right-4', toId: 'pin-proj-005-top' },
     { fromId: 'mcu-pin-right-5', toId: 'pin-proj-005-bottom' },
+
+    // UART Antenna (bottom-left e1) to MCU bottom pins (2 wires)
+    { fromId: 'mcu-pin-bottom-0', toId: 'board-antenna-tx' },
+    { fromId: 'mcu-pin-bottom-1', toId: 'board-antenna-rx' },
 
     // PCB Portfolio (bottom-center) to MCU bottom pins (3 wires)
     { fromId: 'mcu-pin-bottom-2', toId: 'pin-proj-006-SCK' },
@@ -84,7 +89,10 @@ export default function ProjectBoard() {
             <span className="project-board__ref silk-text">U5</span>
           </div>
 
-          <div className="project-board__cell" style={{ gridArea: 'e1' }}></div>
+          <div className="project-board__cell" style={{ gridArea: 'e1' }}>
+            <Antenna idPrefix="board" />
+            <span className="project-board__ref silk-text">ANTENNA 1</span>
+          </div>
 
           <div className="project-board__cell" style={{ gridArea: 'p6' }}>
             <ProjectChip project={projects[5]} />
