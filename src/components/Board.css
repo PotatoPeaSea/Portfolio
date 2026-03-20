@@ -1,0 +1,45 @@
+/* ---- Board ---- */
+.pcb-board {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: 60px 40px 80px;
+  overflow: hidden;
+}
+
+/* Corner mounting holes */
+.board-corner {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--silk-dim);
+  z-index: 50;
+}
+.board-corner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--silk-dim);
+  transform: translate(-50%, -50%);
+}
+.board-corner--tl { top: 12px; left: 12px; }
+.board-corner--tr { top: 12px; right: 12px; }
+.board-corner--bl { bottom: 12px; left: 12px; }
+.board-corner--br { bottom: 12px; right: 12px; }
+
+/* Edge labels */
+.board-label {
+  position: fixed;
+  bottom: 16px;
+  left: 40px;
+  z-index: 50;
+}
+.board-label--right {
+  left: auto;
+  right: 40px;
+}

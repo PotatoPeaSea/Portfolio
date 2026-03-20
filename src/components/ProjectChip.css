@@ -1,0 +1,657 @@
+/* ============================================
+   ProjectChip — Individual PCB Components
+   ============================================ */
+
+.pchip {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.pchip:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* ─── IC Variant ─── */
+.pchip__ic {
+  display: flex;
+  align-items: stretch;
+}
+
+.pchip__ic-body {
+  background: var(--chip-bg);
+  border: 1.5px solid var(--chip-border);
+  border-radius: 3px;
+  padding: 12px 16px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__ic-body,
+.pchip__ic--glow .pchip__ic-body {
+  border-color: var(--trace-green);
+  box-shadow: 0 0 16px rgba(0, 255, 102, 0.15);
+}
+
+.pchip__ic-notch {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 7px;
+  border-radius: 0 0 7px 7px;
+  border: 1.5px solid var(--chip-border);
+  border-top: none;
+  background: var(--pcb-bg);
+}
+
+.pchip__ic-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--chip-label);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.pchip__ic-part {
+  opacity: 0.4;
+  font-size: 0.45rem;
+}
+
+.pchip__ic-pins {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.pchip__ic-pin {
+  width: 12px;
+  height: 2.5px;
+  background: var(--pin-color);
+  border-radius: 1px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__ic-pin {
+  background: var(--pin-gold);
+  box-shadow: var(--solder-glow);
+}
+
+/* ─── Capacitor Variant ─── */
+.pchip__cap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pchip__cap-lead {
+  width: 2px;
+  height: 16px;
+  background: var(--pin-color);
+  transition: background 0.3s;
+}
+
+.pchip:hover .pchip__cap-lead {
+  background: var(--pin-gold);
+  box-shadow: var(--solder-glow);
+}
+
+.pchip__cap-body {
+  width: 56px;
+  height: 72px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1.5px solid var(--chip-border);
+  border-radius: 6px 6px 6px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__cap-body,
+.pchip__cap--glow .pchip__cap-body {
+  border-color: #5c6bc0;
+  box-shadow: 0 0 14px rgba(92, 107, 192, 0.3);
+}
+
+.pchip__cap-label {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: var(--chip-label);
+  text-align: center;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  letter-spacing: 0.1em;
+}
+
+.pchip__cap-value {
+  font-size: 0.4rem;
+  opacity: 0.5;
+}
+
+/* ─── Resistor Variant ─── */
+.pchip__res {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.pchip__res-lead {
+  width: 18px;
+  height: 2px;
+  background: var(--pin-color);
+  transition: background 0.3s;
+}
+
+.pchip:hover .pchip__res-lead {
+  background: var(--pin-gold);
+  box-shadow: var(--solder-glow);
+}
+
+.pchip__res-body {
+  width: 80px;
+  height: 32px;
+  background: linear-gradient(90deg, #3e2723, #4e342e, #3e2723);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  position: relative;
+  transition: box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__res-body,
+.pchip__res--glow .pchip__res-body {
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.3);
+}
+
+.pchip__res-bands {
+  display: flex;
+  gap: 6px;
+}
+
+.pchip__res-band {
+  width: 5px;
+  height: 20px;
+  border-radius: 1px;
+}
+
+.pchip__res-label {
+  font-size: 0.4rem;
+  opacity: 0.6;
+  margin-top: 1px;
+}
+
+/* ─── LED Variant ─── */
+.pchip__led {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.pchip__led-lead {
+  width: 2px;
+  height: 14px;
+  background: var(--pin-color);
+}
+
+.pchip__led-dome {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #66ff66, #00cc44, #004d00);
+  border: 1.5px solid rgba(0, 255, 102, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s;
+  position: relative;
+}
+
+.pchip__led-glow-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  filter: blur(3px);
+}
+
+.pchip:hover .pchip__led-dome,
+.pchip__led--glow .pchip__led-dome {
+  box-shadow: 0 0 20px rgba(102, 255, 102, 0.6), 0 0 40px rgba(102, 255, 102, 0.3);
+  animation: ledBlink 1.2s ease infinite;
+}
+
+.pchip__led-label {
+  margin-top: 4px;
+  font-size: 0.5rem;
+}
+
+/* ─── Connector Variant ─── */
+.pchip__conn-body {
+  background: var(--chip-surface);
+  border: 1.5px solid var(--chip-border);
+  border-radius: 3px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__conn-body,
+.pchip__conn--glow .pchip__conn-body {
+  border-color: var(--trace-copper);
+  box-shadow: 0 0 14px rgba(200, 117, 51, 0.3);
+}
+
+.pchip__conn-pins {
+  display: flex;
+  gap: 6px;
+}
+
+.pchip__conn-pin {
+  width: 6px;
+  height: 10px;
+  background: var(--pin-gold);
+  border-radius: 1px;
+  transition: box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__conn-pin {
+  box-shadow: var(--solder-glow);
+}
+
+.pchip__conn-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--chip-label);
+}
+
+.pchip__conn-part {
+  opacity: 0.4;
+  font-size: 0.4rem;
+}
+
+/* ─── Display Variants (Round / Rect) ─── */
+.pchip__disp {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pchip__disp--round {
+  flex-direction: column;
+}
+
+.pchip__disp--rect {
+  flex-direction: column;
+}
+
+.pchip__disp-header {
+  display: flex;
+  gap: 4px;
+  background: var(--chip-surface);
+  padding: 4px;
+  border: 1px solid var(--chip-border);
+  border-radius: 2px;
+}
+
+.pchip__disp-header--vert {
+  flex-direction: column;
+}
+
+.pchip__disp-pin {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pin-gold);
+  border: 1px solid #000;
+  transition: box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__disp-pin {
+  box-shadow: var(--solder-glow);
+}
+
+.pchip__disp-screen {
+  background: var(--chip-bg);
+  border: 4px solid var(--chip-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pchip__disp--round .pchip__disp-screen {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+}
+
+.pchip__disp--rect .pchip__disp-screen {
+  width: 90px;
+  height: 60px;
+  border-radius: 4px;
+}
+
+.pchip__disp-screen-inner {
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(135deg, #050a15, #001f3f);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.pchip__disp--round .pchip__disp-screen-inner {
+  border-radius: 50%;
+}
+
+.pchip:hover .pchip__disp-screen,
+.pchip__disp--glow .pchip__disp-screen {
+  border-color: #0074D9;
+  box-shadow: 0 0 16px rgba(0, 116, 217, 0.4);
+}
+
+.pchip:hover .pchip__disp-screen-inner,
+.pchip__disp--glow .pchip__disp-screen-inner {
+  opacity: 1;
+  background: linear-gradient(135deg, #001f3f, #0074D9);
+}
+
+.pchip__disp-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #fff;
+  z-index: 2;
+  text-align: center;
+  text-shadow: 0 1px 2px #000;
+}
+
+/* ─── Expanded Detail Overlay ─── */
+.pchip__detail {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  background: rgba(17, 17, 17, 0.97);
+  border: 1px solid var(--trace-copper);
+  border-radius: 6px;
+  padding: 16px;
+  z-index: 100;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(200, 117, 51, 0.15);
+  animation: fadeInUp 0.3s ease;
+}
+
+.pchip__detail::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: rgba(17, 17, 17, 0.97);
+  border-top: 1px solid var(--trace-copper);
+  border-left: 1px solid var(--trace-copper);
+}
+
+.pchip__detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.pchip__detail-part {
+  opacity: 0.5;
+}
+
+.pchip__detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pchip__award-badge {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--trace-gold);
+  border: 1px solid var(--trace-gold);
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.pchip__close {
+  background: none;
+  border: none;
+  color: var(--silk-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.pchip__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pchip__detail-name {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--chip-label);
+  margin-bottom: 8px;
+}
+
+.pchip__detail-desc {
+  font-size: 0.75rem;
+  color: var(--chip-text);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.pchip__detail-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.pchip__tag {
+  font-family: var(--font-code);
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(0, 255, 102, 0.08);
+  border: 1px solid rgba(0, 255, 102, 0.2);
+  color: var(--trace-green);
+}
+
+.pchip__detail-links {
+  display: flex;
+  gap: 10px;
+}
+
+.pchip__link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--trace-gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.pchip__link:hover {
+  color: #fff;
+}
+
+/* ─── Rotary Encoder Variant ─── */
+.pchip__enc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pchip__enc-knob {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #444, #222, #111);
+  border: 2px solid var(--chip-border);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__enc-knob,
+.pchip__enc--glow .pchip__enc-knob {
+  border-color: var(--trace-green);
+  box-shadow: 0 0 16px rgba(0, 255, 102, 0.15);
+}
+
+.pchip__enc-shaft {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #666, #333);
+  border: 1px solid #555;
+  z-index: 2;
+}
+
+.pchip__enc-detent {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  width: 1.5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  transform-origin: 50% 27px;
+  border-radius: 1px;
+}
+
+.pchip__enc-indicator {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 8px;
+  background: var(--trace-green);
+  border-radius: 1px;
+  box-shadow: 0 0 4px rgba(0, 255, 102, 0.5);
+}
+
+.pchip__enc-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--chip-label);
+  text-align: center;
+  margin-top: 4px;
+}
+
+.pchip__enc-part {
+  font-size: 0.4rem;
+  opacity: 0.4;
+}
+
+.pchip__enc-pins {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.pchip__enc-pin-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.pchip__enc-pin {
+  width: 2px;
+  height: 12px;
+  background: var(--pin-color);
+  border-radius: 1px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__enc-pin {
+  background: var(--pin-gold);
+  box-shadow: var(--solder-glow);
+}
+
+.pchip__enc-pin-label {
+  font-size: 0.35rem;
+  opacity: 0.5;
+}
+
+/* ─── ADC Circuit Schematic Variant ─── */
+.pchip__adc-circuit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 25, 40, 0.4);
+  border: 1px dotted var(--silk-dim);
+  border-radius: 4px;
+  padding: 12px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__adc-circuit,
+.pchip__adc-circuit--glow {
+  border-color: #42a5f5;
+  box-shadow: 0 0 20px rgba(66, 165, 245, 0.15);
+  background: rgba(10, 25, 40, 0.7);
+}
+
+.pchip__adc-schema {
+  position: relative;
+}
+
+.adc-svg {
+  display: block;
+}
+
+.pchip:hover .adc-trace {
+  stroke: #42a5f5;
+  filter: drop-shadow(0 0 2px #42a5f5);
+}
+
+.pchip__adc-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--chip-label);
+  text-align: center;
+}
+
+.pchip__adc-part {
+  opacity: 0.4;
+  font-size: 0.4rem;
+}

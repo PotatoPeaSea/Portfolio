@@ -1,0 +1,155 @@
+/* ============================================
+   App — Layout & Connections
+   ============================================ */
+
+.app-layout {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ---- Hero with Antenna ---- */
+.app-hero-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-antenna-wrapper {
+  position: absolute;
+  top: -50px;
+  right: -40px;
+  z-index: 5;
+}
+
+/* ---- Connection Row ---- */
+.app-connections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 800px;
+  justify-items: center;
+}
+
+.app-connection-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Copper trace line (vertical) */
+.app-trace-down {
+  width: 2px;
+  height: 24px;
+  background: var(--trace-copper);
+  opacity: 0.6;
+  border-radius: 1px;
+  position: relative;
+}
+
+.app-trace-down::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 4px;
+  height: 100%;
+  background: var(--trace-copper);
+  opacity: 0.15;
+  border-radius: 2px;
+}
+
+/* ---- Storage Controller ---- */
+.app-storage-ctrl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid rgba(200, 117, 51, 0.2);
+  border-radius: 3px;
+  background: rgba(200, 117, 51, 0.03);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.app-storage-ctrl:hover {
+  background: rgba(200, 117, 51, 0.1);
+  border-color: rgba(200, 117, 51, 0.5);
+}
+
+.app-ctrl-hint {
+  font-size: 0.35rem;
+  color: var(--trace-copper);
+  opacity: 0;
+  transition: opacity 0.2s;
+  position: absolute;
+  bottom: -15px;
+}
+
+.app-storage-ctrl:hover .app-ctrl-hint {
+  opacity: 1;
+}
+
+.app-ctrl-label {
+  font-size: 0.4rem;
+  opacity: 0.4;
+  color: var(--trace-copper);
+}
+
+.app-ctrl-traces {
+  display: flex;
+  gap: 4px;
+}
+
+.app-ctrl-wire {
+  width: 2px;
+  height: 16px;
+  background: var(--trace-copper);
+  opacity: 0.5;
+  border-radius: 1px;
+  animation: traceFlow 1.5s linear infinite;
+}
+
+.app-ctrl-wire:nth-child(1) { animation-delay: 0s; }
+.app-ctrl-wire:nth-child(2) { animation-delay: 0.2s; }
+.app-ctrl-wire:nth-child(3) { animation-delay: 0.4s; }
+.app-ctrl-wire:nth-child(4) { animation-delay: 0.6s; }
+
+/* ---- Row ---- */
+.app-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-row {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .app-connections {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .app-antenna-wrapper {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: -10px;
+  }
+}

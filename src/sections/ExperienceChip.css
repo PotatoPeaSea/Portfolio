@@ -1,0 +1,168 @@
+/* ============================================
+   ExperienceChip — SD Card Module
+   ============================================ */
+
+.exp-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.exp-silk {
+  opacity: 0.3;
+  font-size: 0.5rem;
+}
+
+.exp-controller {
+  opacity: 0.25;
+  font-size: 0.4rem;
+  color: var(--trace-copper);
+}
+
+/* ---- SD Card Shape ---- */
+.sd-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  animation: fadeInUp 0.6s ease both;
+}
+
+/* Chamfered corner (top-right) */
+.sd-card__chamfer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--pcb-bg);
+  clip-path: polygon(0 0, 100% 100%, 100% 0);
+  z-index: 3;
+}
+
+/* Label strip */
+.sd-card__label-strip {
+  background: linear-gradient(90deg, var(--trace-copper), var(--trace-gold));
+  padding: 3px 10px;
+  border-radius: 4px 0 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sd-card__capacity {
+  font-size: 0.45rem;
+  color: #000;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+/* Card body */
+.sd-card__body {
+  background: var(--chip-bg);
+  border: 1.5px solid var(--chip-border);
+  border-top: none;
+  padding: 16px 18px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
+
+.sd-card:hover .sd-card__body {
+  border-color: var(--trace-green);
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.1);
+}
+
+.sd-card__variant {
+  opacity: 0.5;
+  font-size: 0.55rem;
+}
+
+.sd-card__title {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--chip-label);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.sd-card__part {
+  opacity: 0.4;
+  font-size: 0.5rem;
+  margin-bottom: 6px;
+}
+
+/* Gold contact pads */
+.sd-card__contacts {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  padding: 2px 20px;
+  background: var(--chip-bg);
+  border: 1.5px solid var(--chip-border);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.sd-card__pad {
+  width: 14px;
+  height: 10px;
+  background: var(--trace-gold);
+  border-radius: 0 0 2px 2px;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+
+.sd-card:hover .sd-card__pad {
+  box-shadow: var(--solder-glow);
+}
+
+/* ---- Experience Timeline (reused) ---- */
+.exp-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.exp-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.exp-dot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  border-radius: 50%;
+  background: var(--trace-copper);
+  margin-top: 4px;
+  box-shadow: 0 0 6px rgba(200, 117, 51, 0.4);
+}
+
+.exp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.exp-role {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--chip-label);
+}
+
+.exp-company {
+  font-size: 0.5rem;
+  color: var(--trace-copper);
+}
+
+.exp-period {
+  font-size: 0.45rem;
+  opacity: 0.4;
+}

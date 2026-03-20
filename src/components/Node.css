@@ -1,0 +1,48 @@
+/* ---- Node (solder point / via) ---- */
+.node {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.node__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pin-color);
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.node__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--pin-color);
+  opacity: 0.3;
+  transition: opacity 0.3s, border-color 0.3s;
+}
+
+.node--active .node__dot,
+.node:hover .node__dot {
+  background: var(--trace-gold);
+  box-shadow: var(--solder-glow);
+}
+
+.node--active .node__ring,
+.node:hover .node__ring {
+  border-color: var(--trace-gold);
+  opacity: 0.7;
+}
+
+.node__label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4px;
+  white-space: nowrap;
+}

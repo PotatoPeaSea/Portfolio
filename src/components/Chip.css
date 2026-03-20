@@ -1,0 +1,194 @@
+/* ============================================
+   Chip — IC Microchip Component
+   ============================================ */
+
+.chip {
+  display: flex;
+  position: relative;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.chip--dip {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.chip--qfp {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.chip--dimm {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.chip__middle-row {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+}
+
+/* ---- Sizes ---- */
+.chip--lg .chip__body { min-width: 320px; min-height: 200px; padding: 28px 24px; }
+.chip--md .chip__body { min-width: 240px; min-height: 140px; padding: 20px 18px; }
+.chip--sm .chip__body { min-width: 160px; min-height: 90px;  padding: 14px 12px; }
+
+/* ---- Body ---- */
+.chip__body {
+  background: var(--chip-bg);
+  border: 1.5px solid var(--chip-border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+  z-index: 2;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.chip:hover .chip__body {
+  border-color: var(--trace-green);
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.12), inset 0 0 30px rgba(0, 255, 102, 0.03);
+}
+
+/* Notch marker */
+.chip__notch {
+  position: absolute;
+  background: var(--pcb-bg);
+  z-index: 3;
+}
+
+.chip__notch--dip {
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 10px;
+  border-radius: 0 0 10px 10px;
+  border: 1.5px solid var(--chip-border);
+  border-top: none;
+}
+
+.chip__notch--qfp {
+  top: 6px;
+  left: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--chip-border);
+  border: none;
+  z-index: 3;
+}
+
+.chip__notch--dimm {
+  bottom: -1px;
+  left: 30%;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px 4px 0 0;
+  border: 1.5px solid var(--chip-border);
+  border-bottom: none;
+}
+
+/* ---- Text ---- */
+.chip__variant {
+  opacity: 0.5;
+  font-size: 0.55rem;
+}
+
+.chip__title {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--chip-label);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.chip--lg .chip__title { font-size: 1.5rem; }
+.chip--sm .chip__title { font-size: 0.85rem; }
+
+.chip__part-number {
+  opacity: 0.4;
+  font-size: 0.5rem;
+  margin-top: 2px;
+}
+
+.chip__content {
+  width: 100%;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--chip-text);
+  line-height: 1.5;
+}
+
+/* ---- Pins ---- */
+.chip__pins {
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 1;
+}
+
+.chip__pins--left, .chip__pins--right {
+  flex-direction: column;
+}
+
+.chip__pins--top, .chip__pins--bottom {
+  flex-direction: row;
+}
+
+.chip__pins--left { padding-right: 0; }
+.chip__pins--right { padding-left: 0; }
+.chip__pins--top { padding-bottom: 0; }
+.chip__pins--bottom { padding-top: 0; }
+
+.chip__pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Horizontal pins (Left/Right) */
+.chip__pins--left .chip__pin, .chip__pins--right .chip__pin {
+  height: 14px;
+}
+.chip__pins--left .chip__pin-pad, .chip__pins--right .chip__pin-pad {
+  width: 18px;
+  height: 3px;
+  background: var(--pin-color);
+  border-radius: 1px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Vertical pins (Top/Bottom) */
+.chip__pins--top .chip__pin, .chip__pins--bottom .chip__pin {
+  width: 14px;
+}
+.chip__pins--top .chip__pin-pad, .chip__pins--bottom .chip__pin-pad {
+  width: 3px;
+  height: 18px;
+  background: var(--pin-color);
+  border-radius: 1px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* DIMM Edge contacts (Gold fingers) overrides */
+.chip--dimm .chip__pins--bottom .chip__pin {
+  width: auto;
+  flex: 1;
+  padding: 0 1px;
+}
+.chip--dimm .chip__pins--bottom .chip__pin-pad {
+  width: 100%;
+  height: 12px;
+  background: var(--trace-gold);
+  border-radius: 0 0 2px 2px;
+}
+
+.chip:hover .chip__pin-pad {
+  background: var(--pin-gold);
+  box-shadow: var(--solder-glow);
+}

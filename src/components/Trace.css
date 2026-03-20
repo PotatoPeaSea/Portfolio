@@ -1,0 +1,8 @@
+/* ---- Trace ---- */
+.trace__line {
+  stroke-dasharray: 8 4;
+}
+
+.trace--animated .trace__line {
+  animation: traceFlow 1.5s linear infinite;
+}
