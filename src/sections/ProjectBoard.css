@@ -10,8 +10,9 @@
 /* ---- Wireless indicator ---- */
 .project-board__wireless-label {
   text-align: center;
-  opacity: 0.3;
-  font-size: 0.45rem;
+  opacity: 0.8;
+  font-size: 1.2rem;
+  font-weight: 800;
   color: var(--trace-green);
   margin-bottom: 24px;
   animation: ledBlink 2s ease infinite;

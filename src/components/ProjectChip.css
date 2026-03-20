@@ -460,6 +460,25 @@
 .pchip__close:hover {
   background: rgba(255, 255, 255, 0.1);
 }
+.pchip__detail-image-box {
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.pchip__detail-image {
+  width: 100%;
+  height: auto;
+  max-height: 140px;
+  object-fit: cover;
+  display: block;
+}
 
 .pchip__detail-name {
   font-family: var(--font-mono);
@@ -655,4 +674,304 @@
 .pchip__adc-part {
   opacity: 0.4;
   font-size: 0.4rem;
+}
+
+/* ─── MEMS Microphone Variant ─── */
+.pchip__mems {
+  display: flex;
+  align-items: stretch;
+}
+
+.pchip__mems-pins {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.pchip__mems-pin {
+  width: 14px;
+  height: 2.5px;
+  background: var(--pin-color);
+  border-radius: 1px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.pchip:hover .pchip__mems-pin,
+.pchip__mems--glow .pchip__mems-pin {
+  background: var(--pin-gold);
+  box-shadow: var(--solder-glow);
+}
+
+.pchip__mems-body {
+  background: #1e1e24;
+  border: 3px solid var(--trace-gold);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 0 8px rgba(0,0,0,0.8);
+}
+
+.pchip__mems-padgroup {
+  display: flex;
+  gap: 8px;
+}
+
+.pchip__mems-pad {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 3px solid var(--trace-gold);
+  background: #000;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.pchip__mems-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.pchip__mems-silk-top, .pchip__mems-silk-bottom {
+  font-family: var(--font-mono);
+  font-size: 0.32rem;
+  color: var(--silk-color);
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+.pchip__mems-silk-top {
+  transform: rotate(180deg);
+  margin-top: 2px;
+}
+.pchip__mems-silk-bottom {
+  margin-bottom: 2px;
+}
+
+/* ─── Stepper Motor Variant ─── */
+.pchip__stepper {
+  display: flex;
+  align-items: stretch;
+}
+
+.pchip__stepper-pins {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.pchip__stepper-pin {
+  width: 14px;
+  height: 2.5px;
+  background: var(--pin-color);
+  border-radius: 1px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.pchip:hover .pchip__stepper-pin,
+.pchip__stepper--glow .pchip__stepper-pin {
+  background: var(--pin-gold);
+  box-shadow: var(--solder-glow);
+}
+
+.pchip__stepper-body {
+  background: #2a2a2a;
+  border: 3px solid #3d3d3d;
+  border-radius: 8px;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.pchip__stepper-ring {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #333;
+}
+
+.pchip__stepper-shaft {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  box-shadow: inset -2px -2px 4px rgba(0,0,0,0.5), inset 2px 2px 4px rgba(255,255,255,0.8);
+}
+
+.pchip__stepper-mounts {
+  position: absolute;
+  top: 6px; left: 6px; right: 6px; bottom: 6px;
+}
+
+.pchip__stepper-hole {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #111;
+  border: 1px solid #555;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+}
+.pchip__stepper-hole:nth-child(1) { top: 0; left: 0; }
+.pchip__stepper-hole:nth-child(2) { top: 0; right: 0; }
+.pchip__stepper-hole:nth-child(3) { bottom: 0; left: 0; }
+.pchip__stepper-hole:nth-child(4) { bottom: 0; right: 0; }
+
+.pchip__stepper-label {
+  position: absolute;
+  bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  color: #bbb;
+}
+
+/* ─── Arducam Module Variant ─── */
+.pchip__arducam {
+  display: flex;
+  align-items: stretch;
+  zoom: 1.1;
+}
+
+.pchip__arducam-body {
+  background: #2a8a41; /* bright green solder mask */
+  border-radius: 4px;
+  width: 70px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* pins at bottom */
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4), inset 1px 1px 2px rgba(255,255,255,0.3);
+  padding-bottom: 6px;
+}
+
+.pchip__arducam-mount {
+  position: absolute;
+  top: -8px; /* hanging off the top */
+  width: 50px;
+  height: 50px;
+  background: #111;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.6);
+  z-index: 2;
+}
+
+.pchip__arducam-lens {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  border: 4px solid #222;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.pchip__arducam-lens-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #4a2a4a, #111 70%); /* purple reflection */
+  box-shadow: inset 0 0 4px #000;
+}
+
+.pchip__arducam-ear {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #111;
+  border-radius: 50%;
+  top: 19px;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.pchip__arducam-ear--left { left: -5px; }
+.pchip__arducam-ear--right { right: -5px; }
+.pchip__arducam-ear::after { 
+  content: ''; position: absolute; top:3px; left:3px; right:3px; bottom:3px; background: #000; border-radius: 50%;
+}
+
+.pchip__arducam-ic {
+  width: 50px;
+  height: 28px;
+  background: #2a2a2a;
+  border-radius: 2px;
+  margin-bottom: 15px; 
+  margin-top: auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.pchip__arducam-pins {
+  display: flex;
+  gap: 4px;
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pchip__arducam-pin-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.pchip__arducam-pin-silk {
+  position: absolute;
+  bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.25rem;
+  color: #fff;
+  transform: rotate(-90deg);
+  transform-origin: bottom center;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.pchip__arducam-pin {
+  width: 3px;
+  height: 12px;
+  background: var(--pin-color);
+  border-radius: 1px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.pchip:hover .pchip__arducam-pin,
+.pchip__arducam--glow .pchip__arducam-pin {
+  background: var(--pin-gold);
+  box-shadow: var(--solder-glow);
+}
+
+.pchip__arducam-label {
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.26rem;
+  color: rgba(255,255,255,0.85);
+  white-space: normal;
+  text-align: center;
+  line-height: 1.1;
+  width: 66px;
+  font-weight: bold;
 }

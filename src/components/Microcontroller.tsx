@@ -10,17 +10,6 @@ export default function Microcontroller({ className = '' }: { className?: string
 
   return (
     <div className={`mcu ${className}`}>
-      {/* Receiver antenna */}
-      <div className="mcu__receiver">
-        <div className="mcu__receiver-tip" />
-        <div className="mcu__receiver-rod" />
-        {/* Signal arcs (receiving) */}
-        <div className="mcu__rx-signals">
-          <div className="mcu__rx-arc mcu__rx-arc--1" />
-          <div className="mcu__rx-arc mcu__rx-arc--2" />
-          <div className="mcu__rx-arc mcu__rx-arc--3" />
-        </div>
-      </div>
 
       {/* Silk label */}
       <span className="mcu__silk silk-text">U4 — PERIPHERAL MCU</span>

@@ -3,7 +3,7 @@ export interface ProjectLink {
   url: string;
 }
 
-export type ChipVariant = 'ic' | 'capacitor' | 'resistor' | 'led' | 'connector' | 'round-display' | 'rect-display' | 'rotary-encoder' | 'adc';
+export type ChipVariant = 'ic' | 'capacitor' | 'resistor' | 'led' | 'connector' | 'round-display' | 'rect-display' | 'rotary-encoder' | 'adc' | 'mems-mic' | 'stepper' | 'arducam';
 
 export interface Project {
   id: string;
@@ -20,6 +20,11 @@ export interface Project {
   award?: string;
 }
 
+import telebuddyImg from '../assets/telebuddy.jpg';
+import arducamImg from '../assets/Arducam.png';
+import hudsonImg from '../assets/HUDson.jpg';
+import ecoDepotImg from '../assets/ECODEPOT.jpg';
+
 // ─── Projects — replace with your own ───
 export const projects: Project[] = [
   {
@@ -34,11 +39,12 @@ export const projects: Project[] = [
   },
   {
     id: 'proj-002',
-    name: 'Bakeout CLI',
+    name: 'Arducam Test Automation',
     partNumber: 'BK-QT-002',
     description: 'A Qt-based desktop application for controlling ArduCam cameras. Features a bakeout wizard, firmware update integration, and serial command queue visualization.',
     techStack: ['C++', 'Qt/QML', 'ArduCam', 'Serial'],
-    chipVariant: 'rect-display',
+    image: arducamImg,
+    chipVariant: 'arducam',
     spiConnection: true,
     links: [{ label: 'GitHub', url: 'https://github.com/PotatoPeaSea/Payload-Arducam-Bakeout-Test-Automation-UI' }],
   },
@@ -48,6 +54,7 @@ export const projects: Project[] = [
     partNumber: 'TB-ROB-003',
     description: 'A solution to shaky soldering. A 3D-printed 6-DOF robotic arm to mimic a 3D-printed pen controller in real-time. By applying an EMA filter to remove human tremors, it turns a shaky hand into surgeon-like precision. It also features an AR mode for virtual soldering practice.',
     techStack: ['Python', 'Ursina', 'ESP32', 'Robotics'],
+    image: telebuddyImg,
     chipVariant: 'rotary-encoder',
     award: '1st Place @ UBC Hack the Coast',
     links: [
@@ -57,29 +64,27 @@ export const projects: Project[] = [
   },
   {
     id: 'proj-004',
-    name: 'Poker Night',
-    partNumber: 'PK-JS-004',
-    description: 'A fully playable web-based Texas Hold\'em poker game with 3 AI opponents, chip animations, and a premium casino-style dark theme.',
-    techStack: ['JavaScript', 'HTML/CSS', 'Canvas'],
-    chipVariant: 'led',
-    links: [{ label: 'Play', url: '#' }],
+    name: 'HUDson',
+    partNumber: 'HD-AR-004',
+    description: 'A wearable system that visualizes sound for those with hearing loss. Uses ESP32 microcontrollers, AR glasses, and a vibrating wristband to provide visual and tactile audio feedback in 3D space.',
+    techStack: ['C++', 'Python', 'ESP32', 'Kotlin', '3D Printing'],
+    image: hudsonImg,
+    chipVariant: 'mems-mic',
+    award: 'Overall Winner @ nwHacks',
+    links: [{ label: 'Devpost', url: 'https://devpost.com/software/hudson-uw5kn7' }],
   },
   {
     id: 'proj-005',
-    name: 'Poker Tracker',
-    partNumber: 'PT-FS-005',
-    description: 'A session-based poker tracking app with player profiles, leaderboards, and aggregated statistics across sessions.',
-    techStack: ['React', 'Firebase', 'TypeScript'],
-    chipVariant: 'capacitor',
-    links: [{ label: 'GitHub', url: '#' }],
-  },
-  {
-    id: 'proj-006',
-    name: 'PCB Portfolio',
-    partNumber: 'WB-RE-006',
-    description: 'This very website — a PCB-themed interactive portfolio built with React and TypeScript, where each project is a circuit component.',
-    techStack: ['React', 'TypeScript', 'Vite', 'CSS'],
-    chipVariant: 'adc',
-    links: [{ label: 'Source', url: '#' }],
+    name: 'EcoDepot',
+    partNumber: 'ED-ML-005',
+    description: 'A smart recycling bin that sorts recyclables using computer vision and TensorFlow. Features a Next.js dashboard with student ID authentication to provide monetary returns for deposited bottles.',
+    techStack: ['React', 'Next.js', 'Python', 'TensorFlow', 'C++', 'Arduino'],
+    image: ecoDepotImg,
+    chipVariant: 'stepper',
+    award: 'Winner @ StormHacks',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/iancdev/recycle-sorter' },
+      { label: 'Devpost', url: 'https://devpost.com/software/ecodepot' }
+    ],
   },
 ];

@@ -156,8 +156,9 @@
 }
 
 .mcu__sub {
-  opacity: 0.5;
-  font-size: 0.5rem;
+  opacity: 1;
+  font-size: 0.85rem;
+  font-weight: 800;
   color: var(--trace-green);
   margin-top: 4px;
 }

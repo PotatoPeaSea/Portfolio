@@ -26,28 +26,30 @@ export default function ProjectBoard() {
     { fromId: 'mcu-pin-right-1', toId: 'pin-proj-003-VCC' },
     { fromId: 'mcu-pin-right-2', toId: 'pin-proj-003-GND' },
 
-    // Poker Night (mid-left) to MCU left pins (2 wires)
-    { fromId: 'mcu-pin-left-4', toId: 'pin-proj-004-left' },
-    { fromId: 'mcu-pin-left-5', toId: 'pin-proj-004-right' },
+    // HUDson (mid-left p4) to MCU left pins (4 wires)
+    { fromId: 'mcu-pin-left-4', toId: 'pin-proj-004-SD' },
+    { fromId: 'mcu-pin-left-6', toId: 'pin-proj-004-SCK' },
+    { fromId: 'mcu-pin-left-7', toId: 'pin-proj-004-WS' },
+    { fromId: 'mcu-pin-left-8', toId: 'pin-proj-004-LR' },
 
-    // Poker Tracker (mid-right) to MCU right pins (2 wires)
-    { fromId: 'mcu-pin-right-4', toId: 'pin-proj-005-top' },
-    { fromId: 'mcu-pin-right-5', toId: 'pin-proj-005-bottom' },
+    // EcoDepot (mid-right p5) to MCU right pins (4 wires)
+    { fromId: 'mcu-pin-right-4', toId: 'pin-proj-005-left-1' },
+    { fromId: 'mcu-pin-right-5', toId: 'pin-proj-005-left-2' },
+    { fromId: 'mcu-pin-right-6', toId: 'pin-proj-005-left-3' },
+    { fromId: 'mcu-pin-right-7', toId: 'pin-proj-005-left-4' },
+
+
 
     // UART Antenna (bottom-left e1) to MCU bottom pins (2 wires)
     { fromId: 'mcu-pin-bottom-0', toId: 'board-antenna-tx' },
     { fromId: 'mcu-pin-bottom-1', toId: 'board-antenna-rx' },
 
-    // PCB Portfolio (bottom-center) to MCU bottom pins (3 wires)
-    { fromId: 'mcu-pin-bottom-2', toId: 'pin-proj-006-SCK' },
-    { fromId: 'mcu-pin-bottom-3', toId: 'pin-proj-006-MISO' },
-    { fromId: 'mcu-pin-bottom-4', toId: 'pin-proj-006-CS' },
   ];
 
   return (
     <section className="project-board" id="projects-section">
       <div className="project-board__wireless-label silk-text">
-        ⟨⟨⟨ DATA BUS LINK ACTIVE ⟩⟩⟩
+        ⟨⟨⟨ EMBEDDED PROJECTS ⟩⟩⟩
       </div>
 
       <div className="project-board__layout-container">
@@ -94,10 +96,7 @@ export default function ProjectBoard() {
             <span className="project-board__ref silk-text">ANTENNA 1</span>
           </div>
 
-          <div className="project-board__cell" style={{ gridArea: 'p6' }}>
-            <ProjectChip project={projects[5]} />
-            <span className="project-board__ref silk-text">U6</span>
-          </div>
+
 
           <div className="project-board__cell" style={{ gridArea: 'e2' }}></div>
           

@@ -28,6 +28,9 @@ export default function ProjectChip({ project }: ProjectChipProps) {
       {project.chipVariant === 'rect-display' && <RectDisplayBody project={project} expanded={expanded} />}
       {project.chipVariant === 'rotary-encoder' && <RotaryEncoderBody project={project} expanded={expanded} />}
       {project.chipVariant === 'adc' && <ADCBody project={project} expanded={expanded} />}
+      {project.chipVariant === 'arducam' && <ArducamBody project={project} expanded={expanded} />}
+      {project.chipVariant === 'mems-mic' && <MemsMicBody project={project} expanded={expanded} />}
+      {project.chipVariant === 'stepper' && <StepperBody project={project} expanded={expanded} />}
 
       {/* Expanded overlay */}
       {expanded && (
@@ -36,6 +39,11 @@ export default function ProjectChip({ project }: ProjectChipProps) {
             {project.award && <span className="pchip__award-badge">🏆 {project.award}</span>}
             <button className="pchip__close" onClick={() => setExpanded(false)}>✕</button>
           </div>
+          {project.image && (
+            <div className="pchip__detail-image-box">
+              <img src={project.image} alt={`${project.name} preview`} className="pchip__detail-image" />
+            </div>
+          )}
           <h3 className="pchip__detail-name">{project.name}</h3>
           <p className="pchip__detail-desc">{project.description}</p>
           <div className="pchip__detail-tech">
@@ -259,6 +267,84 @@ function ADCBody({ project, expanded }: { project: Project; expanded: boolean })
         </svg>
       </div>
       <span className="pchip__adc-part silk-text">{project.partNumber}</span>
+    </div>
+  );
+}
+
+function MemsMicBody({ project, expanded }: { project: Project; expanded: boolean }) {
+  return (
+    <div className={`pchip__mems ${expanded ? 'pchip__mems--glow' : ''}`}>
+      <div className="pchip__mems-body">
+        <div className="pchip__mems-padgroup pchip__mems-padgroup--top">
+            <div id={`pin-${project.id}-SD`} className="pchip__mems-pad" />
+            <div id={`pin-${project.id}-VDD`} className="pchip__mems-pad" />
+            <div id={`pin-${project.id}-GND`} className="pchip__mems-pad" />
+        </div>
+        <div className="pchip__mems-silk-top silk-text">SD VDD GND</div>
+        <div className="pchip__mems-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--silk-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8">
+              <rect x="9" y="2" width="6" height="12" rx="3"></rect>
+              <path d="M5 10v2a7 7 0 0 0 14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="22"></line>
+            </svg>
+        </div>
+        <div className="pchip__mems-silk-bottom silk-text">L/R WS SCK</div>
+        <div className="pchip__mems-padgroup pchip__mems-padgroup--bottom">
+            <div id={`pin-${project.id}-LR`} className="pchip__mems-pad" />
+            <div id={`pin-${project.id}-WS`} className="pchip__mems-pad" />
+            <div id={`pin-${project.id}-SCK`} className="pchip__mems-pad" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StepperBody({ project, expanded }: { project: Project; expanded: boolean }) {
+  const pins = Array.from({ length: 4 });
+  return (
+    <div className={`pchip__stepper ${expanded ? 'pchip__stepper--glow' : ''}`}>
+      <div className="pchip__stepper-pins pchip__stepper-pins--left">
+        {pins.map((_, i) => <div key={i} id={`pin-${project.id}-left-${i + 1}`} className="pchip__stepper-pin" />)}
+      </div>
+      <div className="pchip__stepper-body">
+        <div className="pchip__stepper-ring">
+          <div className="pchip__stepper-shaft" />
+        </div>
+        <div className="pchip__stepper-mounts">
+           <div className="pchip__stepper-hole" />
+           <div className="pchip__stepper-hole" />
+           <div className="pchip__stepper-hole" />
+           <div className="pchip__stepper-hole" />
+        </div>
+        <span className="pchip__stepper-label silk-text">{project.name}</span>
+      </div>
+    </div>
+  );
+}
+
+function ArducamBody({ project, expanded }: { project: Project; expanded: boolean }) {
+  const pinLabels = ['CS', 'MOSI', 'MISO', 'SCK', 'GND', 'VCC', 'SDA', 'SCL'];
+  return (
+    <div className={`pchip__arducam ${expanded ? 'pchip__arducam--glow' : ''}`}>
+      <div className="pchip__arducam-body">
+        <div className="pchip__arducam-mount">
+            <div className="pchip__arducam-lens">
+                <div className="pchip__arducam-lens-inner" />
+            </div>
+            <div className="pchip__arducam-ear pchip__arducam-ear--left" />
+            <div className="pchip__arducam-ear pchip__arducam-ear--right" />
+        </div>
+        <div className="pchip__arducam-ic" />
+        <div className="pchip__arducam-pins pchip__arducam-pins--bottom">
+            {pinLabels.map((label, i) => (
+                <div key={label} className="pchip__arducam-pin-group">
+                    <span className="pchip__arducam-pin-silk silk-text">{label}</span>
+                    <div id={`pin-${project.id}-${i}`} className="pchip__arducam-pin" />
+                </div>
+            ))}
+        </div>
+        <span className="pchip__arducam-label silk-text">{project.name}</span>
+      </div>
     </div>
   );
 }
