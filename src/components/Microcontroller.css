@@ -203,3 +203,36 @@
   background: var(--pin-gold);
   box-shadow: var(--solder-glow);
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .mcu__body {
+    padding: 10px 12px;
+    min-width: 80px;
+    min-height: 60px;
+  }
+  .mcu__label { font-size: 0.8rem; }
+  .mcu__sub { font-size: 0.7rem; }
+  .mcu__pins--left .mcu__pin,
+  .mcu__pins--right .mcu__pin { width: 10px; height: 2px; margin: 3px 0; }
+  .mcu__pins--top .mcu__pin,
+  .mcu__pins--bottom .mcu__pin { width: 2px; height: 10px; margin: 0 3px; }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .mcu__body {
+    padding: 8px 10px;
+    min-width: 65px;
+    min-height: 50px;
+  }
+  .mcu__label { font-size: 0.65rem; }
+  .mcu__sub { font-size: 0.55rem; }
+  .mcu__part { font-size: 0.35rem; }
+  .mcu__pins--left .mcu__pin,
+  .mcu__pins--right .mcu__pin { width: 8px; height: 1.5px; margin: 2px 0; }
+  .mcu__pins--top .mcu__pin,
+  .mcu__pins--bottom .mcu__pin { width: 1.5px; height: 8px; margin: 0 2px; }
+  .mcu__receiver-rod { height: 12px; }
+  .mcu__receiver-tip { width: 4px; height: 4px; }
+}

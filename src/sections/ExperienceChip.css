@@ -275,3 +275,49 @@
   from { transform: scale(0.95); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .sd-card__body {
+    padding: 14px 14px;
+    min-width: 200px;
+  }
+  .sd-card__title { font-size: 1rem; }
+  .sd-card__chamfer { width: 16px; height: 16px; }
+  .sd-card__capacity { font-size: 0.42rem; }
+  .sd-card__pad { width: 12px; height: 9px; }
+  .exp-role { font-size: 0.65rem; }
+  .exp-company { font-size: 0.45rem; }
+  .exp-period { font-size: 0.4rem; }
+  .exp-dot { width: 6px; height: 6px; min-width: 6px; }
+  .exp-timeline { gap: 8px; }
+
+  .resume-modal-content {
+    width: 95%;
+    height: 80vh;
+  }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .sd-card__body {
+    padding: 10px 10px;
+    min-width: 160px;
+  }
+  .sd-card__title { font-size: 0.85rem; }
+  .sd-card__chamfer { width: 12px; height: 12px; }
+  .sd-card__pad { width: 10px; height: 7px; }
+  .sd-card__contacts { gap: 2px; padding: 2px 12px; }
+  .exp-role { font-size: 0.55rem; }
+  .exp-company { font-size: 0.38rem; }
+  .exp-period { font-size: 0.35rem; }
+  .exp-timeline { gap: 6px; }
+
+  .resume-modal-content {
+    width: 98%;
+    height: 75vh;
+    border-radius: 4px;
+  }
+  .resume-modal-title { font-size: 0.7rem; }
+  .resume-full-btn { font-size: 0.55rem; padding: 6px 16px; }
+}

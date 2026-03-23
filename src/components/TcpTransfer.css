@@ -11,3 +11,29 @@
   pointer-events: none;
   z-index: 50; /* Below popups but above base layout */
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .tcp-container svg text {
+    font-size: 20px !important;
+  }
+  .tcp-container svg rect {
+    transform: scale(0.8);
+  }
+  .tcp-container svg path {
+    stroke-width: 1 !important;
+  }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .tcp-container svg text {
+    font-size: 14px !important;
+  }
+  .tcp-container svg rect {
+    transform: scale(0.6);
+  }
+  .tcp-container svg path {
+    stroke-width: 0.75 !important;
+  }
+}

@@ -32,3 +32,24 @@
   opacity: 0.3;
   font-size: 0.55rem;
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 24px 0 40px;
+    gap: 12px;
+  }
+  .hero-subtitle { font-size: 0.7rem; }
+  .hero-bio { font-size: 0.65rem; max-width: 240px; }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 16px 0 24px;
+    gap: 8px;
+  }
+  .hero-subtitle { font-size: 0.6rem; }
+  .hero-bio { font-size: 0.55rem; max-width: 200px; }
+  .hero-annotation { font-size: 0.4rem; }
+}

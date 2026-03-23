@@ -975,3 +975,30 @@
   width: 66px;
   font-weight: bold;
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .pchip { zoom: 0.9; }
+  .pchip__detail { width: 240px; padding: 12px; }
+  .pchip__detail-name { font-size: 0.85rem; }
+  .pchip__detail-desc { font-size: 0.65rem; }
+  .pchip__tag { font-size: 0.5rem; padding: 1px 5px; }
+  .pchip__link { font-size: 0.6rem; }
+  .pchip__detail-image { max-height: 110px; }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .pchip { zoom: 0.75; }
+  .pchip__detail {
+    width: 200px;
+    padding: 10px;
+    top: calc(100% + 8px);
+  }
+  .pchip__detail-name { font-size: 0.75rem; }
+  .pchip__detail-desc { font-size: 0.55rem; }
+  .pchip__tag { font-size: 0.45rem; padding: 1px 4px; }
+  .pchip__link { font-size: 0.5rem; }
+  .pchip__detail-image { max-height: 80px; }
+  .pchip__award-badge { font-size: 0.4rem; padding: 2px 4px; }
+}

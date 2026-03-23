@@ -43,3 +43,23 @@
   left: auto;
   right: 40px;
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .pcb-board {
+    padding: 40px 16px 60px;
+  }
+  .board-label { left: 16px; }
+  .board-label--right { right: 16px; left: auto; }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .pcb-board {
+    padding: 20px 8px 40px;
+  }
+  .board-label { left: 8px; bottom: 8px; }
+  .board-label--right { right: 8px; left: auto; }
+  .board-corner { width: 12px; height: 12px; }
+  .board-corner::after { width: 4px; height: 4px; }
+}

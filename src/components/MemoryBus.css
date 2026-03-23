@@ -149,3 +149,36 @@
   background: var(--trace-silver);
   border-radius: 1px;
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .memory-bus__contact-box {
+    width: 240px;
+    padding: 14px;
+  }
+  .memory-bus__contact-header span { font-size: 0.5rem; }
+  .memory-bus__contact-icon { font-size: 0.9rem; width: 22px; }
+  .memory-bus__contact-label { font-size: 0.42rem; }
+  .memory-bus__contact-value { font-size: 0.65rem; }
+  .memory-bus__contact-arrow { font-size: 0.7rem; }
+  .memory-bus__contact-item { gap: 8px; padding: 7px 8px; }
+  .memory-bus__pin { width: 3px; height: 7px; }
+  .memory-bus__pins { gap: 6px; }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .memory-bus__contact-box {
+    width: 200px;
+    padding: 10px;
+  }
+  .memory-bus__contact-header span { font-size: 0.42rem; }
+  .memory-bus__contact-icon { font-size: 0.75rem; width: 18px; }
+  .memory-bus__contact-label { font-size: 0.35rem; }
+  .memory-bus__contact-value { font-size: 0.55rem; }
+  .memory-bus__contact-arrow { font-size: 0.6rem; }
+  .memory-bus__contact-item { gap: 6px; padding: 5px 6px; }
+  .memory-bus__contact-list { gap: 5px; }
+  .memory-bus__pin { width: 2px; height: 5px; }
+  .memory-bus__pins { gap: 4px; }
+}

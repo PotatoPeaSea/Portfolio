@@ -44,3 +44,18 @@
   border: 1px solid rgba(0, 255, 102, 0.12);
   color: var(--chip-label);
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .skills-grid { gap: 8px; }
+  .skills-cat { font-size: 0.5rem; }
+  .skills-item { font-size: 0.6rem; padding: 2px 5px; }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .skills-grid { grid-template-columns: 1fr; gap: 6px; }
+  .skills-cat { font-size: 0.45rem; }
+  .skills-item { font-size: 0.5rem; padding: 1px 4px; }
+  .skills-items { gap: 3px; }
+}

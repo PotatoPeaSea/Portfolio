@@ -236,3 +236,45 @@
 @keyframes fanSpin {
   to { transform: rotate(360deg); }
 }
+
+/* Responsive — Tablet */
+@media (max-width: 768px) {
+  .gpu-board {
+    width: 260px;
+    height: 150px;
+  }
+  .gpu-pcie { left: 30px; width: 160px; height: 6px; bottom: -6px; }
+  .gpu-pcie-pin { height: 4px; }
+  .gpu-io-bracket { height: 130px; width: 5px; left: -5px; top: 10px; }
+  .gpu-port.hdmi { height: 16px; }
+  .gpu-port.dp { height: 20px; }
+  .gpu-die { width: 70px; height: 70px; }
+  .gpu-die-center { width: 50px; height: 50px; }
+  .gpu-die-center span:first-child { font-size: 0.7rem; }
+  .gpu-die-hint { font-size: 0.35rem; }
+  .gpu-vram { width: 18px; height: 14px; }
+  .gpu-vram-group { gap: 30px; }
+  .gpu-chip-area { gap: 10px; }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .gpu-board {
+    width: 200px;
+    height: 115px;
+  }
+  .gpu-pcie { left: 25px; width: 120px; height: 5px; bottom: -5px; }
+  .gpu-pcie-pin { height: 3px; }
+  .gpu-pcie-notch { width: 3px; }
+  .gpu-io-bracket { height: 95px; width: 4px; left: -4px; top: 10px; }
+  .gpu-port.hdmi { height: 12px; }
+  .gpu-port.dp { height: 14px; }
+  .gpu-die { width: 50px; height: 50px; }
+  .gpu-die-center { width: 36px; height: 36px; }
+  .gpu-die-center span:first-child { font-size: 0.5rem; }
+  .gpu-die-hint { font-size: 0.28rem; }
+  .gpu-vram { width: 12px; height: 10px; }
+  .gpu-vram-group { gap: 18px; }
+  .gpu-chip-area { gap: 6px; }
+  .gpu-silk { font-size: 0.35rem; }
+}

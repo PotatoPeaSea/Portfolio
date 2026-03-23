@@ -77,8 +77,13 @@
   width: 100%;
 }
 
-/* Responsive */
+/* Responsive — Tablet */
 @media (max-width: 768px) {
+  .app-layout {
+    max-width: 100%;
+    padding: 0 12px;
+  }
+
   .app-row {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -87,6 +92,7 @@
   .app-connections {
     grid-template-columns: 1fr;
     gap: 20px;
+    max-width: 100%;
   }
 
   .app-antenna-wrapper {
@@ -94,5 +100,24 @@
     top: auto;
     right: auto;
     margin-bottom: -10px;
+  }
+
+  .app-trace-down {
+    height: 16px;
+  }
+}
+
+/* Responsive — Phone */
+@media (max-width: 480px) {
+  .app-layout {
+    padding: 0 8px;
+  }
+
+  .app-connections {
+    gap: 14px;
+  }
+
+  .app-row {
+    gap: 20px;
   }
 }
