@@ -19,11 +19,11 @@
 
 /* ---- Contact Box ---- */
 .memory-bus__contact-box {
-  width: 260px;
+  width: 338px;
   background: var(--chip-bg);
   border: 1.5px solid var(--chip-border);
   border-radius: 6px;
-  padding: 16px;
+  padding: 21px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -47,7 +47,7 @@
 }
 
 .memory-bus__contact-header span {
-  font-size: 0.55rem;
+  font-size: 0.72rem;
   color: var(--trace-green);
   letter-spacing: 0.1em;
 }
@@ -55,14 +55,14 @@
 .memory-bus__contact-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .memory-bus__contact-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
+  gap: 13px;
+  padding: 10px 13px;
   border-radius: 4px;
   background: rgba(0, 255, 102, 0.03);
   border: 1px solid rgba(0, 255, 102, 0.08);
@@ -77,9 +77,9 @@
 }
 
 .memory-bus__contact-icon {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: var(--trace-green);
-  width: 24px;
+  width: 31px;
   text-align: center;
 }
 
@@ -92,14 +92,14 @@
 }
 
 .memory-bus__contact-label {
-  font-size: 0.45rem;
+  font-size: 0.58rem;
   color: var(--trace-copper);
   opacity: 0.7;
 }
 
 .memory-bus__contact-value {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.91rem;
   color: var(--chip-label);
   white-space: nowrap;
   overflow: hidden;
@@ -108,7 +108,7 @@
 
 .memory-bus__contact-arrow {
   color: var(--trace-green);
-  font-size: 0.8rem;
+  font-size: 1.04rem;
   opacity: 0.5;
   transition: opacity 0.2s, transform 0.2s;
 }
@@ -132,7 +132,7 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .memory-bus__pins--top {
@@ -144,8 +144,8 @@
 }
 
 .memory-bus__pin {
-  width: 3px;
-  height: 8px;
+  width: 4px;
+  height: 10px;
   background: var(--trace-silver);
   border-radius: 1px;
 }

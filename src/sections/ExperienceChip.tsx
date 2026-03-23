@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './ExperienceChip.css';
 
 const experiences = [
@@ -19,17 +20,22 @@ const experiences = [
 ];
 
 export default function ExperienceChip() {
+  const [showResume, setShowResume] = useState(false);
+
   return (
-    <div className="exp-section" id="experience-section">
-      <div className="exp-silk silk-text">U3 — SD MODULE</div>
+    <>
+      <div className="exp-section" id="experience-section">
+        <div className="exp-silk silk-text">U3 — SD MODULE</div>
 
-      {/* Storage controller label */}
-      <div className="exp-controller silk-text">STORAGE CTRL</div>
-
-      {/* SD Card shape wrapper */}
-      <div className="sd-card">
-        {/* SD card chamfer */}
-        <div className="sd-card__chamfer" />
+        {/* SD Card shape wrapper */}
+        <div 
+          className="sd-card" 
+          onClick={() => setShowResume(true)}
+          style={{ cursor: 'pointer' }}
+          title="View Resume"
+        >
+          {/* SD card chamfer */}
+          <div className="sd-card__chamfer" />
 
         {/* SD card label strip */}
         <div className="sd-card__label-strip">
@@ -64,5 +70,35 @@ export default function ExperienceChip() {
         </div>
       </div>
     </div>
+
+      {showResume && (
+        <div className="resume-modal-overlay" onClick={() => setShowResume(false)}>
+          <div className="resume-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="resume-modal-header">
+              <h3 className="resume-modal-title silk-text">RESUME PREVIEW</h3>
+              <button className="resume-modal-close" onClick={() => setShowResume(false)}>&times;</button>
+            </div>
+            <div className="resume-modal-body">
+              <iframe 
+                src="/Technical_resume___January.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                title="Resume Preview" 
+                className="resume-preview-iframe" 
+              />
+            </div>
+            <div className="resume-modal-footer">
+              <a 
+                href="/Technical_resume___January.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="resume-full-btn silk-text"
+                onClick={() => setShowResume(false)}
+              >
+                OPEN FULL RESUME
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

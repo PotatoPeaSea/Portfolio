@@ -6,6 +6,7 @@ import ProjectBoard from './sections/ProjectBoard';
 import MemoryBus from './components/MemoryBus';
 import Antenna from './components/Antenna';
 import TcpTransfer from './components/TcpTransfer';
+import GraphicsCard from './components/GraphicsCard';
 import './App.css';
 
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
           <HeroChip />
         </div>
 
-        {/* Connection row: Memory Bus → Skills, Storage Controller → SD Card */}
+        {/* Connection row: Memory Bus → Skills, GPU → Media Placeholder */ }
         <div className="app-connections">
           {/* Left side: Memory Bus to RAM */}
           <div className="app-connection-col">
@@ -33,25 +34,10 @@ export default function App() {
             <div className="app-trace-down" />
           </div>
 
-          {/* Right side: Storage Controller trace to SD Card — opens resume */}
+          {/* Right side: GPU trace */}
           <div className="app-connection-col">
             <div className="app-trace-down" />
-            <a
-              href="/Technical_resume___January.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="app-storage-ctrl"
-              title="View Resume"
-            >
-              <span className="app-ctrl-label silk-text">STORAGE CTRL</span>
-              <div className="app-ctrl-traces">
-                <div className="app-ctrl-wire" />
-                <div className="app-ctrl-wire" />
-                <div className="app-ctrl-wire" />
-                <div className="app-ctrl-wire" />
-              </div>
-              <span className="app-ctrl-hint silk-text">↗ OPEN RESUME</span>
-            </a>
+            <GraphicsCard />
             <div className="app-trace-down" />
           </div>
         </div>

@@ -49,7 +49,7 @@ export default function ProjectBoard() {
   return (
     <section className="project-board" id="projects-section">
       <div className="project-board__wireless-label silk-text">
-        ⟨⟨⟨ EMBEDDED PROJECTS ⟩⟩⟩
+        ⟨⟨⟨ PROJECTS ⟩⟩⟩
       </div>
 
       <div className="project-board__layout-container">

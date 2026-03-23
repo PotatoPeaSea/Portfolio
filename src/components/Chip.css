@@ -30,9 +30,9 @@
 }
 
 /* ---- Sizes ---- */
-.chip--lg .chip__body { min-width: 320px; min-height: 200px; padding: 28px 24px; }
-.chip--md .chip__body { min-width: 240px; min-height: 140px; padding: 20px 18px; }
-.chip--sm .chip__body { min-width: 160px; min-height: 90px;  padding: 14px 12px; }
+.chip--lg .chip__body { min-width: 416px; min-height: 260px; padding: 36px 31px; }
+.chip--md .chip__body { min-width: 312px; min-height: 182px; padding: 26px 23px; }
+.chip--sm .chip__body { min-width: 208px; min-height: 117px;  padding: 18px 16px; }
 
 /* ---- Body ---- */
 .chip__body {
@@ -101,15 +101,15 @@
 
 .chip__title {
   font-family: var(--font-mono);
-  font-size: 1.1rem;
+  font-size: 1.43rem;
   font-weight: 600;
   color: var(--chip-label);
   text-align: center;
   letter-spacing: 0.05em;
 }
 
-.chip--lg .chip__title { font-size: 1.5rem; }
-.chip--sm .chip__title { font-size: 0.85rem; }
+.chip--lg .chip__title { font-size: 1.95rem; }
+.chip--sm .chip__title { font-size: 1.1rem; }
 
 .chip__part-number {
   opacity: 0.4;
@@ -153,11 +153,11 @@
 
 /* Horizontal pins (Left/Right) */
 .chip__pins--left .chip__pin, .chip__pins--right .chip__pin {
-  height: 14px;
+  height: 18px;
 }
 .chip__pins--left .chip__pin-pad, .chip__pins--right .chip__pin-pad {
-  width: 18px;
-  height: 3px;
+  width: 23px;
+  height: 4px;
   background: var(--pin-color);
   border-radius: 1px;
   transition: background 0.3s ease, box-shadow 0.3s ease;
@@ -165,11 +165,11 @@
 
 /* Vertical pins (Top/Bottom) */
 .chip__pins--top .chip__pin, .chip__pins--bottom .chip__pin {
-  width: 14px;
+  width: 18px;
 }
 .chip__pins--top .chip__pin-pad, .chip__pins--bottom .chip__pin-pad {
-  width: 3px;
-  height: 18px;
+  width: 4px;
+  height: 23px;
   background: var(--pin-color);
   border-radius: 1px;
   transition: background 0.3s ease, box-shadow 0.3s ease;
@@ -183,7 +183,7 @@
 }
 .chip--dimm .chip__pins--bottom .chip__pin-pad {
   width: 100%;
-  height: 12px;
+  height: 16px;
   background: var(--trace-gold);
   border-radius: 0 0 2px 2px;
 }

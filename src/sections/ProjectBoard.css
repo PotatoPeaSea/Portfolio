@@ -22,7 +22,7 @@
 .project-board__layout-container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -44,7 +44,7 @@
     "p1 p2 p3"
     "p4 mcu p5"
     "e1 p6 e2";
-  gap: 120px 80px;
+  gap: 120px 240px;
   justify-items: center;
   align-items: center;
   padding: 40px;
