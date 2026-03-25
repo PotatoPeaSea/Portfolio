@@ -123,9 +123,9 @@ export default function TcpTransfer() {
 }
 
 function Packet({ label, delay, color, dur, pathId, small }: any) {
-  const w = small ? 24 : 36;
-  const h = small ? 12 : 18;
-  const fs = small ? 5 : 7;
+  const w = small ? 18 : 36;
+  const h = small ? 9 : 18;
+  const fs = small ? 4 : 7;
   return (
     <g filter="url(#tcpGlow)">
       <rect x={-w/2} y={-h/2} width={w} height={h} fill="var(--pcb-bg)" stroke={color} strokeWidth="1" rx="3" />

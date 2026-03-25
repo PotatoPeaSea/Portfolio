@@ -1,3 +1,4 @@
+import { useRef, useState, useEffect } from 'react';
 import type { Project } from '../data/projectData';
 import './ProjectChip.css';
 
@@ -8,9 +9,29 @@ interface ProjectChipProps {
 }
 
 export default function ProjectChip({ project, expanded, onToggle }: ProjectChipProps) {
+  const primaryLink = project.links?.find(l => l.label.toLowerCase().includes('github'))?.url 
+                   || project.links?.find(l => l.label.toLowerCase().includes('devpost'))?.url
+                   || project.links?.[0]?.url;
+
+  const chipRef = useRef<HTMLDivElement>(null);
+  const [overlayPos, setOverlayPos] = useState<'bottom' | 'top'>('bottom');
+
+  useEffect(() => {
+    if (expanded && chipRef.current) {
+      const rect = chipRef.current.getBoundingClientRect();
+      const estimatedOverlayHeight = 400;
+      const screenBuffer = 30;
+      if (rect.bottom + estimatedOverlayHeight + screenBuffer > window.innerHeight && rect.top > estimatedOverlayHeight + screenBuffer) {
+        setOverlayPos('top');
+      } else {
+        setOverlayPos('bottom');
+      }
+    }
+  }, [expanded]);
 
   return (
     <div
+      ref={chipRef}
       className={`pchip pchip--${project.chipVariant} ${expanded ? 'pchip--expanded' : ''}`}
       onClick={onToggle}
       role="button"
@@ -34,14 +55,20 @@ export default function ProjectChip({ project, expanded, onToggle }: ProjectChip
 
       {/* Expanded overlay */}
       {expanded && (
-        <div className="pchip__detail" onClick={(e) => e.stopPropagation()}>
+        <div className={`pchip__detail pchip__detail--${overlayPos}`} onClick={(e) => e.stopPropagation()}>
           <div className="pchip__detail-header" style={{ justifyContent: project.award ? 'space-between' : 'flex-end' }}>
             {project.award && <span className="pchip__award-badge">🏆 {project.award}</span>}
             <button className="pchip__close" onClick={(e) => { e.stopPropagation(); onToggle(); }}>✕</button>
           </div>
           {project.image && (
             <div className="pchip__detail-image-box">
-              <img src={project.image} alt={`${project.name} preview`} className="pchip__detail-image" />
+              {primaryLink ? (
+                <a href={primaryLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} style={{ display: 'block', width: '100%' }}>
+                  <img src={project.image} alt={`${project.name} preview`} className="pchip__detail-image" style={{ cursor: 'pointer' }} />
+                </a>
+              ) : (
+                <img src={project.image} alt={`${project.name} preview`} className="pchip__detail-image" />
+              )}
             </div>
           )}
           <h3 className="pchip__detail-name">{project.name}</h3>

@@ -146,16 +146,18 @@
 @media (max-width: 900px) {
   .project-board__3x3-grid {
     grid-template-areas:
-      "p1 p2"
-      "p3 p4"
-      "mcu mcu"
-      "p5 p6";
-    gap: 50px 30px;
+      "p1 p2 p3"
+      "p4 mcu p5"
+      "e1 p6 e2";
+    gap: 40px 20px;
     padding: 20px;
+    justify-items: center;
   }
 
   .project-board__layout-container {
     max-width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .project-board {
@@ -169,16 +171,19 @@
 
 @media (max-width: 600px) {
   .project-board__3x3-grid {
+    grid-template-columns: auto auto auto;
     grid-template-areas:
-      "mcu"
-      "p1"
-      "p2"
-      "p3"
-      "p4"
-      "p5"
-      "p6";
-    gap: 30px;
-    padding: 12px;
+      "p1  p2  p3"
+      "p4  mcu p5"
+      "e1  p6  e2";
+    gap: 20px 12px;
+    padding: 8px;
+    justify-items: center;
+  }
+
+  .project-board__layout-container {
+    display: flex;
+    justify-content: center;
   }
 
   .project-board {
