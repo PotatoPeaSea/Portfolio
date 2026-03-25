@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { projects } from '../data/projectData';
 import ProjectChip from '../components/ProjectChip';
 import Microcontroller from '../components/Microcontroller';
@@ -46,6 +47,8 @@ export default function ProjectBoard() {
 
   ];
 
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
   return (
     <section className="project-board" id="projects-section">
       <div className="project-board__wireless-label silk-text">
@@ -53,7 +56,7 @@ export default function ProjectBoard() {
       </div>
 
       <div className="project-board__layout-container">
-        
+
         {/* Dynamic Trace Canvas */}
         <div className="project-board__traces-layer">
           <DynamicTraces connections={projectConnections} />
@@ -61,24 +64,40 @@ export default function ProjectBoard() {
 
         {/* 3x3 Grid centered around MCU */}
         <div className="project-board__3x3-grid">
-          
+
           <div className="project-board__cell" style={{ gridArea: 'p1' }}>
-            <ProjectChip project={projects[0]} />
+            <ProjectChip 
+              project={projects[0]} 
+              expanded={expandedId === projects[0].id}
+              onToggle={() => setExpandedId(expandedId === projects[0].id ? null : projects[0].id)}
+            />
             <span className="project-board__ref silk-text">U1</span>
           </div>
-          
+
           <div className="project-board__cell" style={{ gridArea: 'p2' }}>
-            <ProjectChip project={projects[1]} />
+            <ProjectChip 
+              project={projects[1]} 
+              expanded={expandedId === projects[1].id}
+              onToggle={() => setExpandedId(expandedId === projects[1].id ? null : projects[1].id)}
+            />
             <span className="project-board__ref silk-text">U2</span>
           </div>
-          
+
           <div className="project-board__cell" style={{ gridArea: 'p3' }}>
-            <ProjectChip project={projects[2]} />
+            <ProjectChip 
+              project={projects[2]} 
+              expanded={expandedId === projects[2].id}
+              onToggle={() => setExpandedId(expandedId === projects[2].id ? null : projects[2].id)}
+            />
             <span className="project-board__ref silk-text">U3</span>
           </div>
-          
+
           <div className="project-board__cell" style={{ gridArea: 'p4' }}>
-            <ProjectChip project={projects[3]} />
+            <ProjectChip 
+              project={projects[3]} 
+              expanded={expandedId === projects[3].id}
+              onToggle={() => setExpandedId(expandedId === projects[3].id ? null : projects[3].id)}
+            />
             <span className="project-board__ref silk-text">U4</span>
           </div>
 
@@ -87,7 +106,11 @@ export default function ProjectBoard() {
           </div>
 
           <div className="project-board__cell" style={{ gridArea: 'p5' }}>
-            <ProjectChip project={projects[4]} />
+            <ProjectChip 
+              project={projects[4]} 
+              expanded={expandedId === projects[4].id}
+              onToggle={() => setExpandedId(expandedId === projects[4].id ? null : projects[4].id)}
+            />
             <span className="project-board__ref silk-text">U5</span>
           </div>
 
@@ -99,7 +122,7 @@ export default function ProjectBoard() {
 
 
           <div className="project-board__cell" style={{ gridArea: 'e2' }}></div>
-          
+
         </div>
       </div>
 

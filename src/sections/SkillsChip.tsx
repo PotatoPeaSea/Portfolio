@@ -3,8 +3,8 @@ import './SkillsChip.css';
 
 const skills = [
   { category: 'Languages', items: ['C++', 'Python', 'TypeScript', 'JavaScript'] },
-  { category: 'Embedded', items: ['ESP-IDF', 'Arduino', 'Serial', 'SPI/I2C'] },
-  { category: 'Desktop', items: ['Qt/QML', 'Ursina', 'PySerial'] },
+  { category: 'Embedded', items: ['ESP-IDF', 'Arduino', 'Serial', 'SPI/I2C', 'PID Control'] },
+  { category: 'Concepts', items: ['Embedded Systems', 'PCB Design', 'Data Analysis'] },
   { category: 'Web', items: ['React', 'Vite', 'Firebase', 'HTML/CSS'] },
 ];
 

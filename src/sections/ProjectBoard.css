@@ -129,43 +129,64 @@
   background: var(--silk-color);
 }
 
-.project-board__ground-lines div:nth-child(1) { width: 30px; }
-.project-board__ground-lines div:nth-child(2) { width: 20px; }
-.project-board__ground-lines div:nth-child(3) { width: 10px; }
+.project-board__ground-lines div:nth-child(1) {
+  width: 30px;
+}
+
+.project-board__ground-lines div:nth-child(2) {
+  width: 20px;
+}
+
+.project-board__ground-lines div:nth-child(3) {
+  width: 10px;
+}
 
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
   .project-board__3x3-grid {
-    /* Keep same 3x3 grid — MCU stays centered, surrounded by projects */
     grid-template-areas:
-      "p1 p2 p3"
-      "p4 mcu p5"
-      "e1 p6 e2";
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px 20px;
-    padding: 12px;
+      "p1 p2"
+      "p3 p4"
+      "mcu mcu"
+      "p5 p6";
+    gap: 50px 30px;
+    padding: 20px;
   }
-  .project-board__layout-container { max-width: 100%; }
-  .project-board { padding: 40px 0; }
-  .project-board__wireless-label { font-size: 0.9rem; }
-  .pchip { zoom: 0.75; }
+
+  .project-board__layout-container {
+    max-width: 100%;
+  }
+
+  .project-board {
+    padding: 40px 0;
+  }
+
+  .project-board__wireless-label {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 600px) {
   .project-board__3x3-grid {
     grid-template-areas:
-      "p1 p2 p3"
-      "p4 mcu p5"
-      "e1 p6 e2";
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px 8px;
-    padding: 4px;
+      "mcu"
+      "p1"
+      "p2"
+      "p3"
+      "p4"
+      "p5"
+      "p6";
+    gap: 30px;
+    padding: 12px;
   }
-  .project-board { padding: 16px 0; }
-  .project-board__wireless-label { font-size: 0.65rem; margin-bottom: 6px; }
-  .pchip { zoom: 0.55; }
-  .project-board__cell::before { inset: -4px; }
-  .project-board__cell { gap: 4px; }
-  .project-board__ref { font-size: 0.35rem; }
+
+  .project-board {
+    padding: 24px 0;
+  }
+
+  .project-board__wireless-label {
+    font-size: 0.75rem;
+    margin-bottom: 12px;
+  }
 }

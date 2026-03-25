@@ -80,14 +80,14 @@ export default function ExperienceChip() {
             </div>
             <div className="resume-modal-body">
               <iframe 
-                src="/Technical_resume___January.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                src="/Matthew_Lin_Technical_Resume_March.pdf#toolbar=0&navpanes=0&scrollbar=0" 
                 title="Resume Preview" 
                 className="resume-preview-iframe" 
               />
             </div>
             <div className="resume-modal-footer">
               <a 
-                href="/Technical_resume___January.pdf" 
+                href="/Matthew_Lin_Technical_Resume_March.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="resume-full-btn silk-text"

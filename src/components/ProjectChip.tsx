@@ -1,21 +1,21 @@
-import { useState } from 'react';
 import type { Project } from '../data/projectData';
 import './ProjectChip.css';
 
 interface ProjectChipProps {
   project: Project;
+  expanded: boolean;
+  onToggle: () => void;
 }
 
-export default function ProjectChip({ project }: ProjectChipProps) {
-  const [expanded, setExpanded] = useState(false);
+export default function ProjectChip({ project, expanded, onToggle }: ProjectChipProps) {
 
   return (
     <div
       className={`pchip pchip--${project.chipVariant} ${expanded ? 'pchip--expanded' : ''}`}
-      onClick={() => setExpanded(!expanded)}
+      onClick={onToggle}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && setExpanded(!expanded)}
+      onKeyDown={(e) => e.key === 'Enter' && onToggle()}
       id={`project-${project.id}`}
     >
       {/* Component body differs by variant */}
@@ -37,7 +37,7 @@ export default function ProjectChip({ project }: ProjectChipProps) {
         <div className="pchip__detail" onClick={(e) => e.stopPropagation()}>
           <div className="pchip__detail-header" style={{ justifyContent: project.award ? 'space-between' : 'flex-end' }}>
             {project.award && <span className="pchip__award-badge">🏆 {project.award}</span>}
-            <button className="pchip__close" onClick={() => setExpanded(false)}>✕</button>
+            <button className="pchip__close" onClick={(e) => { e.stopPropagation(); onToggle(); }}>✕</button>
           </div>
           {project.image && (
             <div className="pchip__detail-image-box">
@@ -228,7 +228,7 @@ function ADCBody({ project, expanded }: { project: Project; expanded: boolean })
             {/* Inverting & Non-inverting symbols */}
             <text x="43" y="32" fill="var(--silk-color)" fontSize="8" fontFamily="monospace">-</text>
             <text x="43" y="52" fill="var(--silk-color)" fontSize="8" fontFamily="monospace">+</text>
-            
+
             {/* Inputs */}
             <line x1="10" y1="30" x2="40" y2="30" />
             <circle cx="10" cy="30" r="2" fill="var(--trace-copper)" />
@@ -245,7 +245,7 @@ function ADCBody({ project, expanded }: { project: Project; expanded: boolean })
 
             {/* Output to Digital Block */}
             <line x1="70" y1="40" x2="85" y2="40" />
-            
+
             {/* Digital conversion block */}
             <rect x="85" y="25" width="20" height="30" stroke="var(--silk-color)" />
             <text x="88" y="42" fill="var(--silk-dim)" fontSize="6" fontFamily="monospace">SAR</text>
@@ -253,13 +253,13 @@ function ADCBody({ project, expanded }: { project: Project; expanded: boolean })
             {/* Digital outputs */}
             <line x1="105" y1="30" x2="115" y2="30" />
             <text x="117" y="32" fill="var(--silk-color)" fontSize="5" fontFamily="monospace">SCK</text>
-            
+
             <line x1="105" y1="40" x2="115" y2="40" />
             <text x="117" y="42" fill="var(--silk-color)" fontSize="5" fontFamily="monospace">MISO</text>
-            
+
             <line x1="105" y1="50" x2="115" y2="50" />
             <text x="117" y="52" fill="var(--silk-color)" fontSize="5" fontFamily="monospace">CS</text>
-            
+
             <circle id={`pin-${project.id}-SCK`} cx="115" cy="30" r="2" fill="var(--trace-copper)" />
             <circle id={`pin-${project.id}-MISO`} cx="115" cy="40" r="2" fill="var(--trace-copper)" />
             <circle id={`pin-${project.id}-CS`} cx="115" cy="50" r="2" fill="var(--trace-copper)" />
@@ -276,23 +276,23 @@ function MemsMicBody({ project, expanded }: { project: Project; expanded: boolea
     <div className={`pchip__mems ${expanded ? 'pchip__mems--glow' : ''}`}>
       <div className="pchip__mems-body">
         <div className="pchip__mems-padgroup pchip__mems-padgroup--top">
-            <div id={`pin-${project.id}-SD`} className="pchip__mems-pad" />
-            <div id={`pin-${project.id}-VDD`} className="pchip__mems-pad" />
-            <div id={`pin-${project.id}-GND`} className="pchip__mems-pad" />
+          <div id={`pin-${project.id}-SD`} className="pchip__mems-pad" />
+          <div id={`pin-${project.id}-VDD`} className="pchip__mems-pad" />
+          <div id={`pin-${project.id}-GND`} className="pchip__mems-pad" />
         </div>
         <div className="pchip__mems-silk-top silk-text">SD VDD GND</div>
         <div className="pchip__mems-center">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--silk-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8">
-              <rect x="9" y="2" width="6" height="12" rx="3"></rect>
-              <path d="M5 10v2a7 7 0 0 0 14 0v-2"></path>
-              <line x1="12" y1="19" x2="12" y2="22"></line>
-            </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--silk-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8">
+            <rect x="9" y="2" width="6" height="12" rx="3"></rect>
+            <path d="M5 10v2a7 7 0 0 0 14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="22"></line>
+          </svg>
         </div>
         <div className="pchip__mems-silk-bottom silk-text">L/R WS SCK</div>
         <div className="pchip__mems-padgroup pchip__mems-padgroup--bottom">
-            <div id={`pin-${project.id}-LR`} className="pchip__mems-pad" />
-            <div id={`pin-${project.id}-WS`} className="pchip__mems-pad" />
-            <div id={`pin-${project.id}-SCK`} className="pchip__mems-pad" />
+          <div id={`pin-${project.id}-LR`} className="pchip__mems-pad" />
+          <div id={`pin-${project.id}-WS`} className="pchip__mems-pad" />
+          <div id={`pin-${project.id}-SCK`} className="pchip__mems-pad" />
         </div>
       </div>
     </div>
@@ -311,10 +311,10 @@ function StepperBody({ project, expanded }: { project: Project; expanded: boolea
           <div className="pchip__stepper-shaft" />
         </div>
         <div className="pchip__stepper-mounts">
-           <div className="pchip__stepper-hole" />
-           <div className="pchip__stepper-hole" />
-           <div className="pchip__stepper-hole" />
-           <div className="pchip__stepper-hole" />
+          <div className="pchip__stepper-hole" />
+          <div className="pchip__stepper-hole" />
+          <div className="pchip__stepper-hole" />
+          <div className="pchip__stepper-hole" />
         </div>
         <span className="pchip__stepper-label silk-text">{project.name}</span>
       </div>
@@ -328,20 +328,20 @@ function ArducamBody({ project, expanded }: { project: Project; expanded: boolea
     <div className={`pchip__arducam ${expanded ? 'pchip__arducam--glow' : ''}`}>
       <div className="pchip__arducam-body">
         <div className="pchip__arducam-mount">
-            <div className="pchip__arducam-lens">
-                <div className="pchip__arducam-lens-inner" />
-            </div>
-            <div className="pchip__arducam-ear pchip__arducam-ear--left" />
-            <div className="pchip__arducam-ear pchip__arducam-ear--right" />
+          <div className="pchip__arducam-lens">
+            <div className="pchip__arducam-lens-inner" />
+          </div>
+          <div className="pchip__arducam-ear pchip__arducam-ear--left" />
+          <div className="pchip__arducam-ear pchip__arducam-ear--right" />
         </div>
         <div className="pchip__arducam-ic" />
         <div className="pchip__arducam-pins pchip__arducam-pins--bottom">
-            {pinLabels.map((label, i) => (
-                <div key={label} className="pchip__arducam-pin-group">
-                    <span className="pchip__arducam-pin-silk silk-text">{label}</span>
-                    <div id={`pin-${project.id}-${i}`} className="pchip__arducam-pin" />
-                </div>
-            ))}
+          {pinLabels.map((label, i) => (
+            <div key={label} className="pchip__arducam-pin-group">
+              <span className="pchip__arducam-pin-silk silk-text">{label}</span>
+              <div id={`pin-${project.id}-${i}`} className="pchip__arducam-pin" />
+            </div>
+          ))}
         </div>
         <span className="pchip__arducam-label silk-text">{project.name}</span>
       </div>

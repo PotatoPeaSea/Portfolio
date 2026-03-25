@@ -47,6 +47,7 @@
   position: relative;
   z-index: 2;
   transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  flex: 1;
 }
 
 .chip:hover .chip__body {
